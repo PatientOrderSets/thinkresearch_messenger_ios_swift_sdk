@@ -94,6 +94,40 @@ jobs:
           shasum -a 256 webview_flutter_wkwebview.xcframework.zip | cut -f1 -d' '>> webview_flutter_wkwebview.checksum.txt
           ls
           echo ${{ github.ref_name }}
+      - name: Update Package.swift with new version and checksums
+        run: |
+          TAG_NAME=${{ github.ref_name }}
+          APP_CHECKSUM=$(cat chatbot_sdk_channel/Frameworks/Release/App.checksum.txt)
+          FLUTTER_CHECKSUM=$(cat chatbot_sdk_channel/Frameworks/Release/Flutter.checksum.txt)
+          FLUTTERPLUGINREGISTRANT_CHECKSUM=$(cat chatbot_sdk_channel/Frameworks/Release/FlutterPluginRegistrant.checksum.txt)
+          PATH_PROVIDER_FOUNDATION_CHECKSUM=$(cat chatbot_sdk_channel/Frameworks/Release/path_provider_foundation.checksum.txt)
+          SHARED_PREFERENCES_FOUNDATION_CHECKSUM=$(cat chatbot_sdk_channel/Frameworks/Release/shared_preferences_foundation.checksum.txt)
+          SQFLITE_CHECKSUM=$(cat chatbot_sdk_channel/Frameworks/Release/sqflite.checksum.txt)
+          URL_LAUNCHER_IOS_CHECKSUM=$(cat chatbot_sdk_channel/Frameworks/Release/url_launcher_ios.checksum.txt)
+          WEBVIEW_FLUTTER_WKWEBVIEW_CHECKSUM=$(cat chatbot_sdk_channel/Frameworks/Release/webview_flutter_wkwebview.checksum.txt)
+
+
+
+          sed -e "s/PCKAGE_VERSION/${TAG_NAME}/g" \
+              -e "s/APP_CHECKSUM/${APP_CHECKSUM}/g" \
+              -e "s/FLUTTER_CHECKSUM/${FLUTTER_CHECKSUM}/g" \
+              -e "s/FLUTTERPLUGINREGISTRANT_CHECKSUM/${FLUTTERPLUGINREGISTRANT_CHECKSUM}/g" \
+              -e "s/PATH_PRVDR_CHECKSUM/${PATH_PROVIDER_FOUNDATION_CHECKSUM}/g" \
+              -e "s/SHAREPRED_CHECKSUM/${SHARED_PREFERENCES_FOUNDATION_CHECKSUM}/g" \
+              -e "s/SQLITE_CHECKSUM/${SQFLITE_CHECKSUM}/g" \
+              -e "s/URL_LAUNCHER_CHECKSUM/${URL_LAUNCHER_IOS_CHECKSUM}/g" \
+              -e "s/WEBVIEW_CHECKSUM/${WEBVIEW_FLUTTER_WKWEBVIEW_CHECKSUM}/g" \
+              package_swift.template.swift > Package.swift
+
+      - name: Commit and push updated Package.swift
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add Package.swift
+          git commit -m "Update Package.swift for release ${{ github.ref_name }}"
+          git push origin master
+
+
       - name: Publish
         uses: ncipollo/release-action@v1
         with:
