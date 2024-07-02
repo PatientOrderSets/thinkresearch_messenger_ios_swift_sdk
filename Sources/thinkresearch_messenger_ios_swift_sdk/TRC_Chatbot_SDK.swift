@@ -26,7 +26,6 @@ public class TRC_Chatbot_SDK {
     ///   - viewController: The view controller from which the ChatBot UI will be presented.
     public init(configuration: ChatBotConfiguration, viewController: UIViewController)  {
         
-        
         self.configuration = configuration
         self.engine = ChatBotEngine(configuration: configuration)
         self.uiPresenter = ChatBotUIPresenter(engine: engine, viewController: viewController)

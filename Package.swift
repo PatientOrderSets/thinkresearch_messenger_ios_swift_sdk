@@ -1,4 +1,4 @@
-// swift-tools-version: 5.9
+// swift-tools-version: 5.10
 import PackageDescription
 
 let package = Package(
@@ -25,28 +25,29 @@ let package = Package(
         ),
              .binaryTarget(
                    name: "App",
-                   url: "https://github.com/naseem-thinkresearch/thinkresearch_messenger_ios_swift_sdk/releases/download/1.0.7/App.xcframework.zip",
-                   checksum: "68c0a9d2ba041ccde06e18d56bb62901a3a73aea92355c73ca6e95555c57257a"),
+                   url: "https://github.com/PatientOrderSets/thinkresearch_messenger_ios_swift_sdk/releases/download/v1.0.0/App.xcframework.zip",
+                   checksum: "82b89e0d34c594bcdfb75104f59bebf8e06348f0a90f93356d56be475357a569"),
              .binaryTarget(name: "Flutter",
-                           url: "https://github.com/naseem-thinkresearch/thinkresearch_messenger_ios_swift_sdk/releases/download/1.0.7/Flutter.xcframework.zip",
-                           checksum: "66ed104cb1e1511c2f461c5c546556f204d0402d5d72c7a8b562710b35dfb042"),
+                           url: "https://github.com/PatientOrderSets/thinkresearch_messenger_ios_swift_sdk/releases/download/v1.0.0/Flutter.xcframework.zip",
+                           checksum: "3999423457cc4ee8786eb5eb57fa5134fa8f51726bdbffd8cb00ca9076f846b4"),
             .binaryTarget(name: "FlutterPluginRegistrant",
-                       url: "https://github.com/naseem-thinkresearch/thinkresearch_messenger_ios_swift_sdk/releases/download/1.0.7/FlutterPluginRegistrant.xcframework.zip",
-                       checksum: "3f85d8766e0cb6487642fd1410eadaaafc49a00b969583aa17a55ddb871e3556"),
+                       url: "https://github.com/PatientOrderSets/thinkresearch_messenger_ios_swift_sdk/releases/download/v1.0.0/FlutterPluginRegistrant.xcframework.zip",
+                       checksum: "6b57af4c68b1a4c848db94c005bb202c71244a5c41b4e11052062aa8ac934f18"),
              .binaryTarget(name: "path_provider_foundation",
-                           url: "https://github.com/naseem-thinkresearch/thinkresearch_messenger_ios_swift_sdk/releases/download/1.0.7/path_provider_foundation.xcframework.zip",
-                           checksum: "04d11804e56e21e819611349e9b5efc7516e151d1b868dd84bd23e1e43bfb1b6"),
+                           url: "https://github.com/PatientOrderSets/thinkresearch_messenger_ios_swift_sdk/releases/download/v1.0.0/path_provider_foundation.xcframework.zip",
+                           checksum: "de8b4f3cafb7b9225612ea3baeab066a428b99547264a13237bd3f21116907a7"),
              .binaryTarget(name: "shared_preferences_foundation",
-                           url: "https://github.com/naseem-thinkresearch/thinkresearch_messenger_ios_swift_sdk/releases/download/1.0.7/shared_preferences_foundation.xcframework.zip",
-                           checksum: "0ac02871ecb3ba6690ab5f9aa85a2995fb89be08831335d380f4d44fdf2889cc"),
+                           url: "https://github.com/PatientOrderSets/thinkresearch_messenger_ios_swift_sdk/releases/download/v1.0.0/shared_preferences_foundation.xcframework.zip",
+                           checksum: "dae7789447e433cae8a934c9dca81111e64bdea082061fd074cf901aac940419"),
+
              .binaryTarget(name: "sqflite",
-                           url: "https://github.com/naseem-thinkresearch/thinkresearch_messenger_ios_swift_sdk/releases/download/1.0.7/sqflite.xcframework.zip",
-                           checksum: "34ecff13b92d2dfeb0685a203583014347b73042423902796e53ab43f182e431"),
+                           url: "https://github.com/PatientOrderSets/thinkresearch_messenger_ios_swift_sdk/releases/download/v1.0.0/sqflite.xcframework.zip",
+                           checksum: "82d596983ef695b0f2d69a99e0d35185453083bde89a6855ac1561fd3f1a517e"),
              .binaryTarget(name: "url_launcher_ios",
-                           url: "https://github.com/naseem-thinkresearch/thinkresearch_messenger_ios_swift_sdk/releases/download/1.0.7/url_launcher_ios.xcframework.zip",
-                           checksum: "5b77d6ae194ddec62d2b09574654154f5f4a5768430cc873973f787ad2bf11a2"),
-            .binaryTarget(name: "webview_flutter_wkwebview",
-                       url: "https://github.com/naseem-thinkresearch/thinkresearch_messenger_ios_swift_sdk/releases/download/1.0.7/webview_flutter_wkwebview.xcframework.zip",
-                       checksum: "bcea6ae26e213ffc1af80b2f8b4a3458350e47fbde5e8d31fca932bffe4ca98b"),
+                           url: "https://github.com/PatientOrderSets/thinkresearch_messenger_ios_swift_sdk/releases/download/v1.0.0/url_launcher_ios.xcframework.zip",
+                           checksum: "fd66be0f25572d40b45cbec4034227597cfe70a10f90edc4a2233e897b8842f3"),
+         .binaryTarget(name: "webview_flutter_wkwebview",
+                       url: "https://github.com/PatientOrderSets/thinkresearch_messenger_ios_swift_sdk/releases/download/v1.0.0/webview_flutter_wkwebview.xcframework.zip",
+                       checksum: "8fce44c6366f59c09f0700ded338168b7ac4c2aeb7b125d922c70d8b45fd9271"),
      ]
  )
