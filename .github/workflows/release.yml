@@ -37,7 +37,7 @@ jobs:
 
       - name: "Clone Chatbot flutter"
         run: |
-          git clone -b main https://ghp_${{ secrets.PAT_TOKEN }}@github.com/PatientOrderSets/chatbot_sdk_channel.git
+          git clone -b main https://${{ secrets.PAT_TOKEN }}@github.com/PatientOrderSets/chatbot_sdk_channel.git
           cd chatbot_sdk_channel/
 
       - name: 'Flutter pub get'
