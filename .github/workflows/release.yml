@@ -21,11 +21,6 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: Replace USER_NAME and GIT_PAT in settings.gradle
-        run: |
-          echo "Checking if secrets are set correctly..."
-          echo "USER_NAME=${{ secrets.USER_NAME }}" >> $GITHUB_ENV
-          echo "GITHUB_PAT=${{ secrets.PAT_TOKEN }}" >> $GITHUB_ENV
       - name: Checkout current tag
         run: |
           git checkout ${{needs.release.outputs.tag}}
@@ -97,6 +92,7 @@ jobs:
       - name: Update Package.swift with new version and checksums
         run: |
           TAG_NAME=${{ github.ref_name }}
+          ENCODED_TAG_NAME=$(echo "${TAG_NAME}" | perl -MURI::Escape -ne 'chomp;print uri_escape($_),"\n"')
           APP_CHECKSUM=$(cat chatbot_sdk_channel/Frameworks/Release/App.checksum.txt)
           FLUTTER_CHECKSUM=$(cat chatbot_sdk_channel/Frameworks/Release/Flutter.checksum.txt)
           FLUTTERPLUGINREGISTRANT_CHECKSUM=$(cat chatbot_sdk_channel/Frameworks/Release/FlutterPluginRegistrant.checksum.txt)
@@ -108,7 +104,7 @@ jobs:
 
 
 
-          sed -e "s/PCKAGE_VERSION/${TAG_NAME}/g" \
+          sed -e "s/PCKAGE_VERSION/${ENCODED_TAG_NAME}/g" \
               -e "s/APP_CHECKSUM/${APP_CHECKSUM}/g" \
               -e "s/FLUTTER_CHECKSUM/${FLUTTER_CHECKSUM}/g" \
               -e "s/FLUTTERPLUGINREGISTRANT_CHECKSUM/${FLUTTERPLUGINREGISTRANT_CHECKSUM}/g" \
