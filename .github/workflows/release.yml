@@ -117,12 +117,16 @@ jobs:
 
       - name: Commit and push updated Package.swift
         run: |
+          CURR_TAG=${{ github.ref_name }}
+          git checkout master
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git add Package.swift
           git commit -m "Update Package.swift for release ${{ github.ref_name }}"
           git push origin master
 
+
+          git checkout $CURR_TAG
 
       - name: Publish
         uses: ncipollo/release-action@v1
